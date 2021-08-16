@@ -25,7 +25,7 @@ public class Day02_InsertSort {
     }
 
     public static void main(String[] args) {
-        int[]1r1 array = new int[]{2, 1, 3, 5, 1};
+        int[] array = new int[]{2, 1, 3, 5, 1};
         insertSort(array);
     }
 }
