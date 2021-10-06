@@ -121,8 +121,8 @@ public class Person {
         Person maxAgePerson = list.stream().reduce((person1, person2) -> person1.getAge() > person2.age ? person1 : person2).get();
         System.out.println("年齡最大的人：" + maxAgePerson);
 
-        Person maxAgePerson2 = list.stream().collect(maxBy(Comparator.comparing(Person::getAge))).get();
-        System.out.println("年齡最大的人：" + maxAgePerson2);
+//        Person maxAgePerson2 = list.stream().collect(maxBy(Comparator.comparing(Person::getAge))).get();
+//        System.out.println("年齡最大的人：" + maxAgePerson2);
 
 //        按照年齡从小到大排序
 //        List<Student> l3 = list.stream().sorted((s1, s2) -> s1.getAge().compareTo(s2.getAge())).collect(toList());
@@ -131,8 +131,8 @@ public class Person {
 //        List<Student> collect1 = l3.stream().limit(2).collect(toList());
 
         //获取所有名字，组成一条语句
-        String collect2 = list.stream().map(Person::getName).collect(joining(",", "[", "]"));
-        System.out.println("获取所有名字，组成一条语句:" + collect2);
+//        String collect2 = list.stream().map(Person::getName).collect(joining(",", "[", "]"));
+//        System.out.println("获取所有名字，组成一条语句:" + collect2);
 
         //获取年龄的最大值、最小值、平均值、求和等等
         IntSummaryStatistics intSummaryStatistics = list.stream().mapToInt(Person::getAge).summaryStatistics();
