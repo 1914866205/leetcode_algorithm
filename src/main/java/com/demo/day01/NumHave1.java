@@ -1,5 +1,4 @@
 package com.demo.day01;
-
 public class NumHave1 {
     public static void main(String[] args) {
         int num = 12;
