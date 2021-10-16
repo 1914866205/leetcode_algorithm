@@ -19,7 +19,7 @@ public class Test3 {
             System.out.println(a);
             System.out.println(b);
             System.out.println(c);
-            System.out.println("a+b)/c=" + (a + b) / c);
+            System.out.println("(a+b)/c=" + (a + b) / c);
         }
     }
 }
