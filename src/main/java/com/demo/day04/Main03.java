@@ -1,6 +1,4 @@
 package com.demo.day04;
-
-
 import java.util.Arrays;
 import java.util.Scanner;
 public class Main03 {
