@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * author: nitaotao
- * date: 2021/11/3 11:42
+ * date: 2021/11/   3 11:42
  * version: 1.0
  * description: http://noi.openjudge.cn/ch0105/29/
  */
