@@ -8,6 +8,9 @@ package com.demo.day09.z;
  */
 public class Test {
     public int add(){
+//        com.demo.day09.x.Test testX = new com.demo.day09.x.Test();
+//        com.demo.day09.y.Test testY = new com.demo.day09.y.Test();
+//        return testX.add() + testY.add();
         return 1 + 2;
     }
 }
