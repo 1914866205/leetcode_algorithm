@@ -19,6 +19,9 @@ public class Test {
         arrayTools.sort(nums);
         System.out.println("排序后数组");
         Arrays.stream(nums).forEach(System.out::print);
+        for (int i = 0; i < nums.length; i++) {
+            System.out.print(nums[i]);
+        }
         System.out.println("素数个数：" + arrayTools.countPrimes(nums));
     }
 }
