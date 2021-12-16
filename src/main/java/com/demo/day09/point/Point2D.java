@@ -52,12 +52,13 @@ public class Point2D {
     }
     /**
      * 返回两个点的距离
-     *
+     * 重载：参数类型或参数数量改变
      * @param point
      * @return
      */
     public double distance(Point2D point) {
-        return Math.sqrt((point.getxValue() - xValue) * (point.getxValue() - xValue) + (point.getyValue() - yValue) * (point.getyValue() - yValue));
+        return Math.sqrt((point.getxValue() - xValue) * (point.getxValue() - xValue)
+                + (point.getyValue() - yValue) * (point.getyValue() - yValue));
     }
 
     /**

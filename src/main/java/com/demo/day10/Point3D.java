@@ -32,6 +32,10 @@ public class Point3D extends Point2D {
     }
 
     // return the distance between the current point and the origin
+
+    /**
+     * @return
+     */
     @Override
     public double distance() {
         return Math.sqrt(xValue * xValue + yValue * xValue + zValue * zValue);
@@ -44,12 +48,12 @@ public class Point3D extends Point2D {
                 + (point.getzValue() - this.zValue) * (point.getzValue() - this.zValue));
     }
 
+
     // move the current point to the specific location
     public void moveTo(Point3D location) {
         this.xValue = location.getxValue();
         this.yValue = location.getyValue();
-        this.zValue = location.getzValue();
-    }
+        this.zValue = location.getzValue();    }
 
     // mirror the current point according to the origin
     @Override
