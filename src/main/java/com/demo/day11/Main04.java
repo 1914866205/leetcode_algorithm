@@ -11,9 +11,9 @@ import java.util.Scanner;
  */
 public class Main04 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String str = scanner.nextLine();
-//        String str = "ABxy ";
+//        Scanner scanner = new Scanner(System.in);
+//        String str = scanner.nextLine();
+        String str = "ABxy ";
         // A65  a97
         byte[] bytes = str.getBytes();
         for (int i = 0; i < bytes.length; i++) {

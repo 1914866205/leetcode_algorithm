@@ -12,10 +12,10 @@ import java.util.Scanner;
 public class Main02 {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
         //源字符串
-        String str = scanner.nextLine();
-//        String str = "abbada";
+//        String str = scanner.nextLine();
+        String str = "abbada";
         String[] split = str.split("");
         //发现标志
         boolean find = false;

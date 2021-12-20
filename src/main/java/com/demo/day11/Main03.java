@@ -10,11 +10,15 @@ import java.util.Scanner;
  */
 public class Main03 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        double num = scanner.nextDouble();
-        String str = scanner.nextLine();
-        String str1 = scanner.nextLine();
-        String str2 = scanner.nextLine();
+//        Scanner scanner = new Scanner(System.in);
+//        double num = scanner.nextDouble();
+//        String str = scanner.nextLine();
+//        String str1 = scanner.nextLine();
+//        String str2 = scanner.nextLine();
+        double num = 0.85;
+        String str1="ATCGCCGTAAGTAACGGTTTTAAATAGGCC";
+        String str2="ATCGCCGGAAGTAACGGTCTTAAATAGGCC";
+
         String[] arr1 = str1.split("");
         String[] arr2 = str2.split("");
         double count = 0;

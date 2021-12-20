@@ -11,10 +11,10 @@ import java.util.Scanner;
 public class Main05 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String str = scanner.next();
-        String subString = scanner.next();
-//        String str = "CDAA";
-//        String subString = "AABCD";
+//        String str = scanner.next();
+//        String subString = scanner.next();
+        String str = "CDAA";
+        String subString = "AABCD";
 
         //把较短的串作为子串
         if (subString.length() > str.length()) {
