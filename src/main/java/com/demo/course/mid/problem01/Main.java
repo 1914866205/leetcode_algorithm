@@ -17,7 +17,22 @@ public class Main {
         String num1 = scanner.next();
         String num2 = scanner.next();
         Main main = new Main();
-        main.sumByArr(num1, num2);
+        System.out.println(main.sum(num1,num2));
+//        main.sumByArr(num1, num2);
+    }
+
+
+    /**
+     * sum方法：对大整数进行加法运算
+     *
+     * @param num1 大整数1
+     * @param num2 大整数2
+     * @return
+     */
+    public BigInteger sum(String num1, String num2) {
+        BigInteger bigInteger1 = new BigInteger(num1);
+        BigInteger bigInteger2 = new BigInteger(num2);
+        return bigInteger1.add(bigInteger2);
     }
 
     /**
@@ -100,16 +115,5 @@ public class Main {
     }
 
 
-    /**
-     * sum方法：对大整数进行加法运算
-     *
-     * @param num1 大整数1
-     * @param num2 大整数2
-     * @return
-     */
-    public BigInteger sum(String num1, String num2) {
-        BigInteger bigInteger1 = new BigInteger(num1);
-        BigInteger bigInteger2 = new BigInteger(num2);
-        return bigInteger1.add(bigInteger2);
-    }
+
 }
