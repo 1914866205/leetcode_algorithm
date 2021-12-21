@@ -22,8 +22,8 @@ public class Main {
         for (int i = 0; i < m; i++) {
             selectNum[i] = scanner.nextInt();
         }
-//        int[] data = new int[]{1, 1, 1, 2, 5, 6, 6, 7, 8, 8, 9, 9, 9};
-//        int[] selectNum = new int[]{4};
+//        int[] data = new int[]{1, 1, 1, 2, 5, 6, 6, 7, 80, 81, 81, 82, 93, 93, 93};
+//        int[] selectNum = new int[]{3, 4, 79, 83};
         for (int i = 0; i < selectNum.length - 1; i++) { //从查找数组中取出元素进行查询
 //            System.out.print(selectNum[i] + "最近为:");
             System.out.println(main.binarySearch(data, selectNum[i]));
@@ -89,21 +89,32 @@ public class Main {
             if (start > end) {
                 // start>end,则没找到,打印当前的distant
                 //另一种情况是已找到，在左右，取最小
-//                System.out.println();
+//                System.out.println("距离最近为：" + distance + "-----最近中间值-1：" + arr[mid - 1]);
+//                System.out.println("距离最近为：" + distance + "-----最近中间值：" + arr[mid]);
 //                System.out.println("距离最近为：" + distance + "-----最近中间值+1：" + arr[mid + 1]);
-                int result = arr[0] - value;
-                // 若有多个值满足条件，输出最小的一个
-                for (int i = 0; i < arr.length; i++) {
-                    if (Math.abs(arr[i] - value) == Math.abs(distance)) {
-                        result = arr[i];
-                        break;
-                    }
-                }
-                if (Math.abs(result) <= Math.abs(arr[mid + 1] - value)) {
-                    return result;
+//                int result = arr[0] - value;
+//                // 若有多个值满足条件，输出最小的一个
+//                for (int i = 0; i < arr.length; i++) {
+//                    if (Math.abs(arr[i] - value) == Math.abs(distance)) {
+//                        result = arr[i];
+//                        break;
+//                    }
+//                }
+//                if (Math.abs(result) <= Math.abs(arr[mid + 1] - value)) {
+//                    return result;
+//                } else {
+//                    return arr[mid + 1];
+//                }
+//                System.out.println(arr[mid-1]+" "+arr[mid]);
+                int startDistance = Math.abs(arr[start] - value);
+                int endDistance = Math.abs(arr[end] - value);
+//                System.out.println(startDistance+"  "+endDistance);
+                if (startDistance == endDistance) {
+                    return arr[end]; //此时start>end,选较小的
                 } else {
-                    return arr[mid + 1];
+                    return startDistance < endDistance ? arr[start] : arr[end];
                 }
+//                System.out.println(startDistance > endDistance ? arr[end] : arr[start]);
             }
         }
 
