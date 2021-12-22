@@ -81,7 +81,6 @@ public class Main {
                     start = mid + 1;
                 }
             }
-
             if (start > end) {
                 int startDistance = Math.abs(arr[start] - value);
                 int endDistance = Math.abs(arr[end] - value);
@@ -92,6 +91,5 @@ public class Main {
                 }
             }
         }
-
     }
 }
