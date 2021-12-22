@@ -14,6 +14,7 @@ public class Solution {
     }
 
     public int removeDuplicates(int[] nums) {
+//        先写出数组元素<=2时的情况；
         if (nums.length == 0) {
             return 0;
         }
@@ -23,6 +24,7 @@ public class Solution {
         if (nums.length == 2) {
             return nums[0] == nums[1] ? 1 : 2;
         }
+//        当数组元素大于2时，找到数组最大元素
         int index = 1;
         int temp;
         int max = nums[0];
