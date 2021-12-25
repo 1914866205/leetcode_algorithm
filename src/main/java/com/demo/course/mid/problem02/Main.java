@@ -8,6 +8,7 @@ package com.demo.course.mid.problem02;
  * description: http://noi.openjudge.cn/ch0110/05/
  */
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -63,6 +64,8 @@ public class Main {
                 }
             }
         }
+        Arrays.stream(scale).forEach(System.out::print);
+        Arrays.stream(id).forEach(System.out::print);
         //面试分数线为排名第m*150%（向下取整）名的选手的分数
         int line = (int) Math.floor(plan * 1.5);
         //输出分数线和录取人数，此处应减一。因为第三名对应数组位置是2
