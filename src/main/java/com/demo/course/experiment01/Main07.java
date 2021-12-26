@@ -1,48 +1,30 @@
-package com.demo.course.mid.problem01;
+package com.demo.course.experiment01;
 
+import java.util.Scanner;
 
 /**
  * author: nitaotao
- * date: 2021/12/21 0:28
+ * date: 2021/12/27 0:46
  * version: 1.0
- * description: http://noi.openjudge.cn/ch0106/10/
+ * description: http://noi.openjudge.cn/ch0106/solution/32402664/
  */
-
-import java.math.BigInteger;
-import java.util.Scanner;
-
-public class Main {
+public class Main07 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String num1 = scanner.next();
         String num2 = scanner.next();
-        Main main = new Main();
-//        System.out.println(main.sum(num1,num2));
-        main.sumByArr(num1, num2);
+        Main07 main07 = new Main07();
+        main07.decByArr(num1, num2);
     }
 
-
     /**
-     * sum方法：对大整数进行加法运算
+     * decByArr方法：对大整数进行减法运算
      *
      * @param num1 大整数1
      * @param num2 大整数2
      * @return
      */
-    public BigInteger sum(String num1, String num2) {
-        BigInteger bigInteger1 = new BigInteger(num1);
-        BigInteger bigInteger2 = new BigInteger(num2);
-        return bigInteger1.add(bigInteger2);
-    }
-
-    /**
-     * sumByArr方法：对大整数进行加法运算
-     *
-     * @param num1 大整数1
-     * @param num2 大整数2
-     * @return
-     */
-    public void sumByArr(String num1, String num2) {
+    public void decByArr(String num1, String num2) {
         //把长度较长的作为num1,长度较短的作为num2
         //判断最大长度，进行竖式计算
         if (num1.length() < num2.length()) {
@@ -73,31 +55,32 @@ public class Main {
          * 22222222222222222222
          * 00000033333333333333
          */
-        int temp = 0; //进位标记
+        int temp = 0; //借位标记
         String[] result = new String[num1Str.length + 1];
         //初始化为0
         result[0] = "0";
         for (int i = num1Str.length - 1; i > -1; i--) {
-            result[i + 1] = String.valueOf((Integer.parseInt(num1Str[i]) + Integer.parseInt(newNum2[i]) + temp) % 10);
-            //进位标志
-            temp = Integer.valueOf(num1Str[i]) + Integer.valueOf(newNum2[i]) + temp > 9 ? 1 : 0;
+            //够减则不用借位
+            result[i + 1] = String.valueOf(((Integer.parseInt(num1Str[i]) - Integer.parseInt(newNum2[i]) - temp) >= 0 ? (Integer.parseInt(num1Str[i]) - Integer.parseInt(newNum2[i]) - temp) : (10 + Integer.parseInt(num1Str[i]) - Integer.parseInt(newNum2[i])-temp) % 10));
+            //借位标志         始终按1算  不按负数
+            temp = Integer.valueOf(num1Str[i]) - Integer.valueOf(newNum2[i]) - temp < 0 ? 1 : 0;
         }
         //首位进位
-        result[0] = temp == 0 ? "0" : "1";
+        result[0] = temp == 0 ? "0" : "-";
 
-        //判断是不是全是0
+        //判断是不是全是0   先排除首位
         int count = 0;
-        for (int i = 0; i < result.length; i++) {
+        for (int i = 1; i < result.length; i++) {
             if (result[i].equals("0")) {
                 count++;
             }
         }
-        if (count == result.length) {
+        if (count == result.length - 1) {
             //如果全是0
             System.out.print("0");
         } else {
 
-            //输出时注意首位不能为0
+            //输出时注意首位不能为0,并且负号后不能直接为0
             boolean flag = false;
             for (int i = 0; i < result.length; i++) {
                 if (flag) {
@@ -113,7 +96,4 @@ public class Main {
             }
         }
     }
-
-
-
 }
