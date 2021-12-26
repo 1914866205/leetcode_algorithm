@@ -318,156 +318,112 @@ public class Tools {
             }
         }
 
-        //删除重复数据 A的键和B的值不重复
+        //删除重复数据 A的键和B的值不重复,并且A的键和A的值不能相同
+
         Set set = map.keySet();
-//        Iterator iterator = set.iterator();
-//        while (iterator.hasNext()) {
-//            int key = (int) iterator.next();
-//            int value = (int) map.get(key);
-//            //不包括自身
-//            if (key == value) {
-//                map.remove(key);
-//            }
-//        }
+        Iterator iterator = set.iterator();
+        ArrayList reNumlist = new ArrayList();
+        while (iterator.hasNext()) {
+            int key = (int) iterator.next();
+            int value = (int) map.get(key);
+            //不包括自身
+            if (key == value) {
+                reNumlist.add(key);
+            }
+        }
+        //删除一致的数据
+        for (int i = 0; i < reNumlist.size(); i++) {
+            map.remove(reNumlist.get(i));
+        }
+
         Iterator iterator2 = set.iterator();
+        int[] keys = new int[set.size()];
+        int[] values = new int[set.size()];
+        int index = 0;
         while (iterator2.hasNext()) {
             int key = (int) iterator2.next();
             int value = (int) map.get(key);
-            System.out.println(key+" "+value);
+            keys[index] = key;
+            values[index] = value;
+            index++;
         }
-
-        //删除重复元素后的set
-        int[][] result = new int[set.size()][2];
-
+        //因为结果是成对出现的
+        //只取一个
+        int[][] result = new int[keys.length / 2][2];
+         index = 0;
+        for (int i = 0; i <keys.length ; i+=2) {
+            result[index][0] = keys[i];
+            result[index][1] = values[i];
+            index++;
+        }
         return result;
     }
-//        Map map = new HashMap();
-//        int sum; //记录当前数的真因数和
-//        int sum2; //记录被比较数的真因数和
-//        for (int i = from; i <= to; i++) {
-//            sum = 1; // 1是所有数的真因数
-//            sum2 = 1;
-//            //自己的公因数和
-//            for (int k = 2; k < i; k++) {
-//                //能除尽则为因数
-//                if (i % k == 0) {
-//                    sum += k;
-//                }
-//            }
-//            for (int j = from; j <= to; j++) {
-//                //不和自己比较
-//                if (i == j) {
-//                    continue;
-//                } else {
-//                    //自己的公因数和
-//                    for (int k = 2; k < j; k++) {
-//                        if (j % k == 0) {
-//                            sum2 += k;
-//                        }
-//                    }
-//                }
-////            System.out.println("sum2:  "+sum2);
-//                if (sum == sum2 && i != j) {
-//                    System.out.println(i + "  " + j);
-//                    map.put(i, j);
-//                    break;
-//                }
-//            }
-//        }
-//        //删除重复数据 A的键和B的值不重复
-//        Set set = map.keySet();
-//        Iterator iterator = set.iterator();
-//        while (iterator.hasNext()) {
-//            int key = (int) iterator.next();
-//            int value = (int) map.get(key);
-//            Iterator iterator2 = set.iterator();
-//            while (iterator2.hasNext()) {
-//                int key2 = (int) iterator2.next();
-//                if (value == key2) {
-//                    set.remove(key2);
-//                    break;
-//                }
-//            }
-//        }
-//        //删除重复元素后的set
-//        Iterator takeOffIterator = set.iterator();
-//        int[][] result = new int[set.size()][2];
-//        int index = 0;
-//        while (takeOffIterator.hasNext()) {
-//            int key = (int) takeOffIterator.next();
-//            int value = (int) map.get(key);
-//            result[index][0] = key;
-//            result[index][1] = value;
-//            index++;
-//        }
-//        return result;
-//}
 
     public static void main(String[] args) {
         Tools tools = new Tools();
-//        System.out.println("========sameContents方法测试========");
-//        int[] arr1 = {1, 7, 9, 9, 2, 5};
-//        int[] arr2 = {1, 7, 9, 9, 9, 5};
-//        int[] arr3 = {1, 7, 2, 9, 5};
-//        System.out.println("arr1==arr2:" + tools.sameContents(arr1, arr2) + "  arr1==arr3:" + tools.sameContents(arr1, arr3) + "  arr2==arr3:" + tools.sameContents(arr2, arr3));
-//        System.out.println("========multiply方法测试========");
-//        int[][] A = {{1, 2}, {3, 4}};
-//        int[][] B = {{1, 0}, {0, 1}};
-//        int[][] multiply = tools.multiply(A, B);
-//        for (int i = 0; i < multiply.length; i++) {
-//            for (int j = 0; j < multiply[i].length; j++) {
-//                System.out.print(multiply[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
-//        System.out.println("========twinPrimes方法测试========");
-//        int[][] twinPrimesArr = tools.twinPrimes(0, 100);
-//        for (int i = 0; i < twinPrimesArr.length; i++) {
-//            for (int j = 0; j < twinPrimesArr[i].length; j++) {
-//                System.out.print(twinPrimesArr[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
-//        System.out.println("========twinPrimes方法测试========");
-//        System.out.println("原数字:" + 900 + "  反转后:" + tools.reverse(900));
-//        System.out.println("========singleNumber方法测试========");
-//        int[] nums = {1, 2, 9, 5, 7, 6, 2};
-//        System.out.println(tools.singleNumber(nums));
-//        System.out.println("========reverse方法测试========");
-//        int[] reverseArr = {1, 2, 9, 5, 7, 6, 2};
-//        tools.rotate(reverseArr, 3);
-//        for (int i = 0; i < reverseArr.length; i++) {
-//            System.out.print(reverseArr[i] + " ");
-//        }
-//        System.out.println();
-//        System.out.println("========intersection方法测试========");
-//        int[] intersectionA = {1, 58, 9, 3, 47, 4, 5, 7, 8};
-//        int[] intersectionB = {9, 3, 56, 42, 7};
-//        int[] intersection = tools.intersection(intersectionA, intersectionB);
-//        for (int i = 0; i < intersection.length; i++) {
-//            System.out.print(intersection[i] + " ");
-//        }
-//        System.out.println();
-//        System.out.println("========findKthLargest方法测试========");
-//        int[] findKthLargest = {1, 58, 9, 3, 47, 4, 5, 7, 8};
-//        System.out.println(tools.findKthLargest(findKthLargest, 3));
-//        System.out.println("========sort方法测试========");
-//        int[] sortArr = {1, 58, 9, 3, 47, 4, 5, 7, 8};
-//        tools.sort(sortArr);
-//        for (int i = 0; i < sortArr.length; i++) {
-//            System.out.print(sortArr[i] + " ");
-//        }
-//        System.out.println();
-//        System.out.println("isPowerOfFour方法测试========");
-//        System.out.println("32是4的幂次：" + tools.isPowerOfFour(32));
-//        System.out.println("16是4的幂次：" + tools.isPowerOfFour(16));
-//        System.out.println("========amicableNums方法测试========");
-        int[][] amicableNumsArr = tools.amicableNums(1, 100000);
-//        for (int i = 0; i < amicableNumsArr.length; i++) {
-//            for (int j = 0; j < amicableNumsArr[i].length; j++) {
-//                System.out.print(amicableNumsArr[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
+        System.out.println("========sameContents方法测试========");
+        int[] arr1 = {1, 7, 9, 9, 2, 5};
+        int[] arr2 = {1, 7, 9, 9, 9, 5};
+        int[] arr3 = {1, 7, 2, 9, 5};
+        System.out.println("arr1==arr2:" + tools.sameContents(arr1, arr2) + "  arr1==arr3:" + tools.sameContents(arr1, arr3) + "  arr2==arr3:" + tools.sameContents(arr2, arr3));
+        System.out.println("========multiply方法测试========");
+        int[][] A = {{1, 2}, {3, 4}};
+        int[][] B = {{1, 0}, {0, 1}};
+        int[][] multiply = tools.multiply(A, B);
+        for (int i = 0; i < multiply.length; i++) {
+            for (int j = 0; j < multiply[i].length; j++) {
+                System.out.print(multiply[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("========twinPrimes方法测试========");
+        int[][] twinPrimesArr = tools.twinPrimes(0, 100);
+        for (int i = 0; i < twinPrimesArr.length; i++) {
+            for (int j = 0; j < twinPrimesArr[i].length; j++) {
+                System.out.print(twinPrimesArr[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("========twinPrimes方法测试========");
+        System.out.println("原数字:" + 900 + "  反转后:" + tools.reverse(900));
+        System.out.println("========singleNumber方法测试========");
+        int[] nums = {1, 2, 9, 5, 7, 6, 2};
+        System.out.println(tools.singleNumber(nums));
+        System.out.println("========reverse方法测试========");
+        int[] reverseArr = {1, 2, 9, 5, 7, 6, 2};
+        tools.rotate(reverseArr, 3);
+        for (int i = 0; i < reverseArr.length; i++) {
+            System.out.print(reverseArr[i] + " ");
+        }
+        System.out.println();
+        System.out.println("========intersection方法测试========");
+        int[] intersectionA = {1, 58, 9, 3, 47, 4, 5, 7, 8};
+        int[] intersectionB = {9, 3, 56, 42, 7};
+        int[] intersection = tools.intersection(intersectionA, intersectionB);
+        for (int i = 0; i < intersection.length; i++) {
+            System.out.print(intersection[i] + " ");
+        }
+        System.out.println();
+        System.out.println("========findKthLargest方法测试========");
+        int[] findKthLargest = {1, 58, 9, 3, 47, 4, 5, 7, 8};
+        System.out.println(tools.findKthLargest(findKthLargest, 3));
+        System.out.println("========sort方法测试========");
+        int[] sortArr = {1, 58, 9, 3, 47, 4, 5, 7, 8};
+        tools.sort(sortArr);
+        for (int i = 0; i < sortArr.length; i++) {
+            System.out.print(sortArr[i] + " ");
+        }
+        System.out.println();
+        System.out.println("isPowerOfFour方法测试========");
+        System.out.println("32是4的幂次：" + tools.isPowerOfFour(32));
+        System.out.println("16是4的幂次：" + tools.isPowerOfFour(16));
+        System.out.println("========amicableNums方法测试========");
+        int[][] amicableNumsArr = tools.amicableNums(1, 2000);
+        for (int i = 0; i < amicableNumsArr.length; i++) {
+            for (int j = 0; j < amicableNumsArr[i].length; j++) {
+                System.out.print(amicableNumsArr[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 }
