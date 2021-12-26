@@ -20,11 +20,6 @@ public class Solution {
      */
     public int minDistance(String word1, String word2) {
         int count = 0;
-        //可以同顺序找到作为最大子串
-        while (!word1.equals(word2)) {
-
-
-        }
         return count;
     }
 }

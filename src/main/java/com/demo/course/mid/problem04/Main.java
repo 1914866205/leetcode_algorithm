@@ -15,7 +15,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         Main main = new Main();
-
         main.findSuShuDui(n);
 
     }
@@ -47,8 +46,6 @@ public class Main {
         if (flag) {
             System.out.print("empty");
         }
-
-
     }
 
     /**
