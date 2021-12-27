@@ -1,9 +1,7 @@
 package com.demo.course.experiment01;
 
 
-import java.util.Iterator;
-import java.util.Scanner;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * author: nitaotao
@@ -13,10 +11,10 @@ import java.util.TreeSet;
  */
 public class Main08 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String str = scanner.next();
-        Main08 main08 = new Main08();
-        main08.factor(str);
+        Scanner sc = new Scanner(System.in);
+        String c = sc.next();
+        Main08 main = new Main08();
+        main.factor(c);
     }
 
     /**
@@ -25,10 +23,31 @@ public class Main08 {
      * @param c
      */
     public void factor(String c) {
-        //自动排序
-        TreeSet treeSet = new TreeSet();
-
-        //大整数，一个个判断
-
+        //最大位数
+        int[] a = new int[30];
+        String[] str = c.split("");
+        //每一位转成数字
+        for(int i=0;i<str.length;i++) {
+            a[a.length-i-1] = Integer.parseInt(str[str.length-1-i]);
+        }
+        int t;
+        int m = 0;
+        for(int i=2;i<=9;i++) {
+            t = 0;
+            for(int j=0;j<a.length;j++) {
+                if (a[j] + t >= i) {
+                    t = ((a[j] + t) % i) * 10;
+                } else {
+                    t = a[j] * 10;
+                }
+            }
+            if(t==0) {
+                System.out.print(i+" ");
+                m = 1;
+            }
+        }
+        if (m == 0) {
+            System.out.println("none");
+        }
     }
 }
