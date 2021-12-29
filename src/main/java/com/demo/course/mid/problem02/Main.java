@@ -6,9 +6,11 @@ package com.demo.course.mid.problem02;
  * date: 2021/12/21 10:25
  * version: 1.0
  * description: http://noi.openjudge.cn/ch0110/05/
+ *  分数线划定
+ * 【解题思路】：使用两个数组分别存放成绩和选手号，先进行排序，再计算出分数线，筛选符合成绩的选
+ * 手的信息输出
  */
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -64,12 +66,12 @@ public class Main {
                 }
             }
         }
-        Arrays.stream(scale).forEach(System.out::print);
-        Arrays.stream(id).forEach(System.out::print);
-        //面试分数线为排名第m*150%（向下取整）名的选手的分数
+//        Arrays.stream(scale).forEach(System.out::print);
+//        Arrays.stream(id).forEach(System.out::print);
+        //面试分数线  为  排名第m*150%（向下取整）名的选手 的分数
         int line = (int) Math.floor(plan * 1.5);
         //输出分数线和录取人数，此处应减一。因为第三名对应数组位置是2
-        int scaleLine = scale[line-1];
+        int scaleLine = scale[line - 1];//数组当前位置成绩为分数线
         int count = 0;
         for (int i = 0; i < scale.length; i++) {
             if (scale[i] >= scaleLine) {

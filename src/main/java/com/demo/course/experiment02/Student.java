@@ -65,6 +65,36 @@ public class Student {
     }
 
     /**
+     * 返回最大成绩的学科名
+     *
+     * @return
+     */
+    public String maxCourse() {
+        if (math > english && math > history) {
+            return "math";
+        } else if (english > history && english > math) {
+            return "english";
+        } else {
+            return "history";
+        }
+    }
+
+    /**
+     * 返回最大成绩的学科名
+     *
+     * @return
+     */
+    public String minCourse() {
+        if (math < english && math < history) {
+            return "math";
+        } else if (english < history && english < math) {
+            return "english";
+        } else {
+            return "history";
+        }
+    }
+
+    /**
      * 和其他学生平均分比较
      *
      * @param student
@@ -85,7 +115,7 @@ public class Student {
     }
 
     /**
-     * 和其他学生最第分比较
+     * 和其他学生最低分比较
      *
      * @param student
      * @return 是否比其他学生最低分低
@@ -172,6 +202,8 @@ public class Student {
         System.out.print("  tom的最低成绩：");
         System.out.printf("%.2f", tom.min());
         System.out.println();
+        System.out.println("tom的最高成绩的科目："+tom.maxCourse());
+        System.out.println("tom的最低成绩的科目："+tom.minCourse());
         System.out.println("jerry的信息");
         jerry.print();
         System.out.print("jerry的平均成绩：");

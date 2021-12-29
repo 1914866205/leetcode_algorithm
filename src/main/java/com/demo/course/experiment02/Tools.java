@@ -384,7 +384,7 @@ public class Tools {
             }
             System.out.println();
         }
-        System.out.println("========twinPrimes方法测试========");
+        System.out.println("========reverse方法测试========");
         System.out.println("原数字:" + 900 + "  反转后:" + tools.reverse(900));
         System.out.println("========singleNumber方法测试========");
         int[] nums = {1, 2, 9, 5, 7, 6, 2};

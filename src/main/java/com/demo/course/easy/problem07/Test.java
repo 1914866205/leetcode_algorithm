@@ -40,7 +40,7 @@ public class Test {
             } else { //得到数组中偶数的个1数
                 arrayInfo[1]++;
             }
-            if (arr[i] >= 0) { //负数个数
+            if (arr[i] >= 0) { //非负数个数
                 arrayInfo[4]++;
             }
         }
@@ -48,6 +48,7 @@ public class Test {
         arrayInfo[2] = arr[0];
         //最小值  设置初始值
         arrayInfo[3] = arr[0];
+        //因为这里要用到  i+1  ，所以如果继续套用上一个循环，会报数组越界，除非在循环外再专门比对一下最后一个元素。
         for (int i = 0; i < arr.length - 1; i++) {
             if (arrayInfo[2] < arr[i + 1]) {
                 //最大值

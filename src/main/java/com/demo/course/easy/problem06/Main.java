@@ -36,16 +36,15 @@ public class Main {
             }
         } else {
             //如果是空心
-            for (int i = 0; i < high; i++) {
-                for (int j = 0; j < width; j++) {
+            for (int i = 0; i < high; i++) {    //行
+                for (int j = 0; j < width; j++) {   //列
                     //如果是第一行或者最后一行
                     if (i == 0 || i == high - 1) {
-                        //如果是最后一列
+                        //如果是最后一列，就输出 字符 ，再换行
                         if (j == width - 1) {
-                            //就输出字符+换行
                             System.out.println(paint);
                         } else {
-                            //否则就是不换行字符
+                            //否则就是 字符，但不换行
                             System.out.print(paint);
                         }
                     } else { //如果不是第一行或最后一行

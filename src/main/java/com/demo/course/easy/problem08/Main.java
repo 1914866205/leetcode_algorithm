@@ -5,7 +5,9 @@ package com.demo.course.easy.problem08;
  * author: nitaotao
  * date: 2021/12/20 23:29
  * version: 1.0
- * description: todo
+ * description:  http://noi.openjudge.cn/ch0106/0
+ * 向量点积运算
+ * 根据点积的运算法则，各对应位置相乘再相加
  */
 import java.util.Scanner;
 public class Main {
@@ -33,6 +35,7 @@ public class Main {
      */
     public int count(int[] arr1, int[] arr2) {
         int count = 0;
+        // 点积公式：  [a,b]=a1*b1 + a2*b2 +....+ an*bn
         for (int i = 0; i <arr1.length ; i++) {
             count += arr1[i] * arr2[i];
         }

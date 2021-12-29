@@ -6,6 +6,9 @@ package com.demo.course.mid.problem01;
  * date: 2021/12/21 0:28
  * version: 1.0
  * description: http://noi.openjudge.cn/ch0106/10/
+ * 大整数加法
+ * 【解题思路】：本题显然考核大整数类的应用。也有另外一种解题思路：先比较两个输入的字符数字长度，
+ * 判断其最大串长度，以此为模板创建数组，构建竖式计算，较小的左边至为 0，需要使用进位变量来控制。
  */
 
 import java.math.BigInteger;
@@ -17,8 +20,8 @@ public class Main {
         String num1 = scanner.next();
         String num2 = scanner.next();
         Main main = new Main();
-//        System.out.println(main.sum(num1,num2));
-        main.sumByArr(num1, num2);
+        System.out.println(main.sum(num1, num2));
+//        main.sumByArr(num1, num2);
     }
 
 
@@ -55,10 +58,11 @@ public class Main {
         String[] num1Str = num1.split("");
         String[] num2Str = num2.split("");
         //化两个数分割为等长数组
-        //位置计数器，用来对齐竖式计算
+        //位置计数器，用来对齐竖式计算，初始定位字符串末尾
         int indexNum2 = num2Str.length - 1;
         //如果num1位数较多
         String[] newNum2 = new String[num1.length()];
+        //indexNum2和i控制左边不越界
         for (int i = newNum2.length - 1; indexNum2 > -1 || i > -1; i--) {
             //一位一位对齐，从后往前
             if (indexNum2 < 0) {
@@ -85,18 +89,18 @@ public class Main {
         //首位进位
         result[0] = temp == 0 ? "0" : "1";
 
-        //判断是不是全是0
+        //判断结果是不是全是0   0 + 0 = 0
         int count = 0;
         for (int i = 0; i < result.length; i++) {
             if (result[i].equals("0")) {
                 count++;
             }
         }
+        //判断结果是不是全是0
         if (count == result.length) {
             //如果全是0
             System.out.print("0");
         } else {
-
             //输出时注意首位不能为0
             boolean flag = false;
             for (int i = 0; i < result.length; i++) {
@@ -113,7 +117,4 @@ public class Main {
             }
         }
     }
-
-
-
 }

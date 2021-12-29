@@ -23,7 +23,7 @@ public class Main {
         } else {
             System.out.print("no");
         }
-        System.out.print(main.isTriAngle(x, y, z) ? "yes" : "no");
+//        System.out.print(main.isTriAngle(x, y, z) ? "yes" : "no");
 
     }
 

@@ -21,7 +21,7 @@ public class Test {
         double x = scanner.nextDouble(); //输入参数x的实际值
         double y = scanner.nextDouble(); //输入参数y的实际值
         System.out.println(test.compareByIf(x, y));
-        System.out.println(test.compareByTh(x, y));
+        System.out.print(test.compareByTh(x, y));
     }
 
     /**

@@ -4,7 +4,11 @@ package com.demo.course.mid.problem09;
  * author: nitaotao
  * date: 2021/12/22 18:53
  * version: 1.0
- * description: todo
+ * description: 二进制求和
+ * https://leetcode-cn.com/problems/add-binary/submissions/
+ * 【解题思路】： 先比较两个输入的字符数字长度，判断其最大串长度，以此为模板创建数组，构建竖式计
+ * 算，较小的左边至为 0，需要使用进位变量来控制。本题思路和大整数相加思路基本一致，将十进制思想
+ * 改为二进制即可。
  */
 public class Solution {
     public static void main(String[] args) {
@@ -12,6 +16,13 @@ public class Solution {
         System.out.println(solution.addBinary("1010", "1011"));
     }
 
+    /**
+     *  addBinary：二进制求和
+     * @param a 参数a
+     * @param b 参数b
+     * @return 二进制求和后的结果
+     * 本题思路和 mid 01 完全一致
+     */
     public String addBinary(String a, String b) {
         String num1 = a;
         String num2 = b;
@@ -31,7 +42,7 @@ public class Solution {
         int indexNum2 = num2Str.length - 1;
         //如果num1位数较多
         String[] newNum2 = new String[num1.length()];
-
+        //indexNum2和i控制左边不越界
         for (int i = newNum2.length - 1; indexNum2 > -1 || i > -1; i--) {
             //一位一位对齐，从后往前
             if (indexNum2 < 0) {

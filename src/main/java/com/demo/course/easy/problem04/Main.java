@@ -16,11 +16,11 @@ public class Main {
         int x = scanner.nextInt(); //虫子每x小时能吃掉一个苹果
         int y = scanner.nextInt(); //经过y小时你还有多少个完整的苹果
         System.out.print(main.remainByCeil(n, x, y));
-        System.out.print(main.remainByFloor(n, x, y));
+//        System.out.print(main.remainByFloor(n, x, y));
     }
 
     /**
-     * remainByCeil：使用向上取整肌酸苹果与虫子问题
+     * remainByCeil：使用向上取整计算苹果与虫子问题
      * @param n n个苹果
      * @param x 虫子每x小时能吃掉一个苹果
      * @param y 经过y小时你还有多少个完整的苹果
@@ -32,15 +32,15 @@ public class Main {
     }
 
     /**
-     * remainByFloor：使用向下取整肌酸苹果与虫子问题
+     * remainByFloor：使用向下取整计算苹果与虫子问题
      * @param n n个苹果
      * @param x 虫子每x小时能吃掉一个苹果
      * @param y 经过y小时你还有多少个完整的苹果
      * @return int 类型
      */
     public int remainByFloor(int n, int x, int y) {
-        /*floor 向下取整 */
-        int remain = (int) (Math.floor(y * 1.0 / x) == y*1.0 / x ? n - Math.floor(y * 1.0 / x) : n - Math.floor(y * 1.0 / x) - 1);
+        /*floor 向下取整                  判断向下取整的结果是不是刚好是整数，如果不是，就说明有的苹果没有被完全吃完，剩余苹果需要再减一           */
+        int remain = (int) ((Math.floor(y * 1.0 / x) == y*1.0 / x) ? (n - Math.floor(y * 1.0 / x)) : (n - Math.floor(y * 1.0 / x) - 1));
         return remain >= 0 ? remain : 0;
     }
 

@@ -27,11 +27,14 @@ public class Main {
         int count = 0;
         for (; start <= end; start++) {
             //此处使用递归查询2出现的次数
+            // 临时变量，对其操作是为了不改变 控制指针 start 的值
             int i = start;
+            //只要不是0
             while (i != 0) {
                 if (i % 10 == 2) {
                     count++;
                 }
+                //每次删掉当前个位数
                 i /= 10;
             }
         }
