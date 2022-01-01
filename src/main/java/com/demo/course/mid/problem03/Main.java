@@ -7,7 +7,7 @@ import java.util.Scanner;
  * date: 2021/12/21 13:42
  * version: 1.0
  * description: http://noi.openjudge.cn/ch0111/01
- *  查找最接近元素
+ * 查找最接近元素
  * 【解题思路】：使用二分查找，每次折半找到中间元素，和 value 作差，取绝对值，即为距离。注意事项：
  * 需要处理左边界情况，右边界情况，后几位重复，
  */
