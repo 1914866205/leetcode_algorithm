@@ -1,5 +1,9 @@
 package com.programmercarl.linkedlist.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 /**
  * @ClassName ListNode
  * @Descriotion 单链表的结点
@@ -7,6 +11,8 @@ package com.programmercarl.linkedlist.domain;
  * @Date 2022/5/2 17:24
  * @Version 1.0
  **/
+@AllArgsConstructor
+@Builder
 public class ListNode {
     /**
      * 结点的值
@@ -37,5 +43,16 @@ public class ListNode {
     public ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
+    }
+
+    @Override
+    public String toString() {
+        ListNode cur = this;
+        while (cur.next != null&&cur.next!=this) {
+            System.out.print(cur.val+" ");
+            cur=cur.next;
+        }
+        System.out.println(cur.val);
+        return null;
     }
 }
