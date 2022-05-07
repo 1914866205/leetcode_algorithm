@@ -1,8 +1,7 @@
-package com.programmercarl.linkedlist.domain;
+package com.programmercarl.linkedlist.homework;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
 
 /**
  * @ClassName ListNode
@@ -47,9 +46,12 @@ public class ListNode {
 
     @Override
     public String toString() {
-        return "ListNode{" +
-                "val=" + val +
-                ", next=" + next +
-                '}';
+        ListNode cur = this;
+        while (cur.next != null&&cur.next!=this) {
+            System.out.print(cur.val+" ");
+            cur=cur.next;
+        }
+        System.out.println(cur.val);
+        return null;
     }
 }

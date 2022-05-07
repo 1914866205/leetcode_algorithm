@@ -1,4 +1,4 @@
-package com.programmercarl.linkedlist.work;
+package com.programmercarl.linkedlist.homework;
 
 /**
  * @ClassName Select

@@ -1,6 +1,4 @@
-package com.programmercarl.linkedlist.work;
-
-import com.programmercarl.linkedlist.domain.ListNode;
+package com.programmercarl.linkedlist.homework;
 
 /**
  * @ClassName Queue

@@ -1,8 +1,4 @@
-package com.programmercarl.linkedlist.work;
-
-import com.programmercarl.linkedlist.domain.ListNode;
-
-import java.util.List;
+package com.programmercarl.linkedlist.homework;
 
 /**
  * @ClassName ListReverse
