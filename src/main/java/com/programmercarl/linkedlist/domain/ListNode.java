@@ -2,7 +2,6 @@ package com.programmercarl.linkedlist.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
 
 /**
  * @ClassName ListNode

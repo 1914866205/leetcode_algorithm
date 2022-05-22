@@ -56,6 +56,6 @@ public class ListReverse {
         }
         //最后一个结点
         temp2.next.next = temp1.next;
-        System.out.println(temp2.next);
+        node.next = temp2.next;
     }
 }
