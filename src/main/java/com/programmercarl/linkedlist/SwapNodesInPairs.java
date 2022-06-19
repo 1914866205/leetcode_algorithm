@@ -2,7 +2,6 @@ package com.programmercarl.linkedlist;
 
 import com.programmercarl.linkedlist.domain.ListNode;
 
-import java.util.List;
 
 /**
  * @ClassName SwapNodesInPairs
