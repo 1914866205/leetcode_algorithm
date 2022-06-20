@@ -1,7 +1,6 @@
 package com.programmercarl.linkedlist;
 
 import com.programmercarl.linkedlist.domain.ListNode;
-import org.apache.bcel.generic.NEW;
 
 /**
  * @ClassName DetectCycle
