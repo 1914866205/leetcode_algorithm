@@ -3,13 +3,13 @@ package com.programmercarl.hashtable;
 import java.util.*;
 
 /**
- * @ClassName sum3
+ * @ClassName Sum3
  * @Descriotion TODO
  * @Author nitaotao
  * @Date 2022/6/21 15:03
  * @Version 1.0
  **/
-public class sum3 {
+public class Sum3 {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         //数组长度
