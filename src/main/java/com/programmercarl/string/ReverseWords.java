@@ -101,6 +101,8 @@ public class ReverseWords {
             char temp = s.charAt(start);
             s.replace(start, start + 1, String.valueOf(s.charAt(end - 1)));
             s.replace(end - 1, end, String.valueOf(temp));
+//            s.setCharAt(start, s.charAt(end - 1));
+//            s.setCharAt(end-1, temp);
             start++;
             end--;
         }
