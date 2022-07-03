@@ -12,7 +12,7 @@ import java.util.*;
  * 101. 对称二叉树
  **/
 public class IsSymmetric {
-    public boolean isSymmetric(TreeNode root) {
+    public static boolean isSymmetric(TreeNode root) {
         //只有根元素，直接通过
         if (root.left == null && root.right == null) {
             return true;
@@ -29,7 +29,7 @@ public class IsSymmetric {
         return getNum(root.left, root.right);
     }
 
-    public boolean getNum(TreeNode root1, TreeNode root2) {
+    public static boolean getNum(TreeNode root1, TreeNode root2) {
         if ((root1 == null && root2 != null) || (root1 != null && root2 == null)) {
             return false;
         }
@@ -48,7 +48,7 @@ public class IsSymmetric {
         }
     }
 
-    public void reverse(TreeNode root) {
+    public static void reverse(TreeNode root) {
         if (root == null) {
             return;
         }
