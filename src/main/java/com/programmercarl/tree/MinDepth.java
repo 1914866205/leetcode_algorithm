@@ -1,5 +1,7 @@
 package com.programmercarl.tree;
 
+import com.programmercarl.util.GenerateTreeNode;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -15,7 +17,7 @@ import java.util.List;
  * https://leetcode.cn/problems/minimum-depth-of-binary-tree/
  **/
 public class MinDepth {
-    public int minDepth(TreeNode root) {
+    public static int minDepth(TreeNode root) {
         //层序遍历，哪一行不满，即有缺省，则为最短深度
         int minDepth = 0;
         if (root == null) {
@@ -48,5 +50,8 @@ public class MinDepth {
             }
         }
         return minDepth;
+    }
+    public static void main(String[] args) {
+        System.out.println(minDepth(GenerateTreeNode.generateTreeNode("[3,9,20,null,null,15,7]")));
     }
 }
