@@ -84,6 +84,4 @@ public class IsSameTree {
         boolean rightResult = compare(left.right, right.right);
         return leftResult && rightResult;
     }
-
-
 }
