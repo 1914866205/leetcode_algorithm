@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @ClassName Combine
+ * @ClassName CombingAdv
  * @Descriotion TODO
  * @Author nitaotao
- * @Date 2022/7/8 11:09
+ * @Date 2022/7/8 14:54
  * @Version 1.0
  * https://leetcode.cn/problems/combinations/submissions/
- * 77. 组合
+ * 77. 组合 优化
  **/
-public class Combine {
+public class CombingAdv {
     List<List<Integer>> result = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -33,6 +33,7 @@ public class Combine {
      * @param k    列表限制长度
      * @param t    为了防止全排列，给的范围
      * @param list 结果集
+     *             剪枝 操作
      */
     public void backtracking(int n, int k, int t, List<Integer> list) {
 
@@ -43,7 +44,16 @@ public class Combine {
             return;
         }
         // [1,n]
-        for (int i = t; i < n; i++) {
+        // 此处不用循环 n - t 次
+        // 因为只需要 k 个元素，所以 k 次即可。
+        // i + k <= n
+        // i <= n - k
+        // 一共需要 n^2 *（n - k）！ 次
+        // 每次已进行了 list.size() 次回溯
+        // 还需要  k-list.size()-1 次
+        // 所以只需要移动  n - ( k - list.size()) + 1 次
+        // 1 为起始位置   i + k = n
+        for (int i = t; i <= n - (k - list.size()) + 1; i++) {
             //如果元素已经添加，则跳过
             if (list.contains(i)) {
                 continue;
@@ -56,18 +66,4 @@ public class Combine {
             list.remove(list.size() - 1);
         }
     }
-
-
-//    public void backtracking(参数) {
-//        if (终止条件) {
-//            存放结果;
-//            return;
-//        }
-//        for (选择 : 本层集合中的元素（树中结点孩子的数量就是集合的大小）) {
-//            处理结点；
-//            //递归
-//            backtracking(路径, 选择列表);
-//            //回溯，撤销处理结果
-//        }
-//    }
 }
