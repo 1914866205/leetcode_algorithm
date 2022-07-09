@@ -15,6 +15,91 @@ import java.util.*;
  * 对于给定的输入，保证和为 target 的不同组合数少于 150 个。
  **/
 public class CombinationSum {
+
+//    List<List<Integer>> result = new ArrayList<List<Integer>>();
+//
+//    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+//        backtracking(new ArrayList<Integer>(), candidates, target,0);
+//        return result;
+//    }
+//
+//    /**
+//     * @param candidates 选数字的数组
+//     * @param target     数字之和目标值
+//     * @param startIndex
+//     */
+//    int sum = 0;
+//
+//    public void backtracking(List<Integer> list, int[] candidates, int target,int index) {
+//        //超出结果值就不用加了
+//        if (sum > target) {
+//            return;
+//        }
+//        //返回 和为sum的结果集
+//        if (sum == target) {
+//            List<Integer> temp = new ArrayList<Integer>(list);
+//            //不可在原集合上直接排序，否则会打乱回溯顺序
+//            Collections.sort(temp);
+//            //如果存在已经重复的结果
+//            if (!removeRep(result, temp)) {
+//                return;
+//            }
+//            result.add(new ArrayList<>(temp));
+//            return;
+//        }
+//        for (int i = index; i < candidates.length; i++) {
+//            //累加sum，添加元素到集合
+//            list.add(candidates[i]);
+//            sum += candidates[i];
+//            //递归
+//            backtracking(list, candidates, target,i);
+//            //回溯
+//            sum -= candidates[i];
+//            list.remove(list.size() - 1);
+//        }
+//    }
+//
+//    /**
+//     * 结果集去重
+//     *
+//     * @param result
+//     * @param list
+//     * @return
+//     * false:结果集存在 , 不可添加
+//     * true:结果集不存在，可添加
+//     */
+//    public boolean removeRep(List<List<Integer>> result, List<Integer> list) {
+//        for (List<Integer> item : result) {
+//            //如果两个 list  完全相同
+//            if (isSameList(list, item)) {
+//                return false;
+//            }
+//        }
+//        //都不相同，可以添加
+//        return true;
+//    }
+//
+//
+//    /**
+//     * 两个集合元素是否完全相同
+//     *
+//     * @param list1
+//     * @param list2
+//     * @return
+//     */
+//    public boolean isSameList(List<Integer> list1, List<Integer> list2) {
+//        if (list1.size() != list2.size()) {
+//            return false;
+//        }
+//        for (int i = 0; i < list1.size(); i++) {
+//            if (list1.get(i) != list2.get(i)) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+
+
     List<List<Integer>> result = new ArrayList<List<Integer>>();
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
@@ -32,7 +117,6 @@ public class CombinationSum {
     int sum = 0;
 
     public void backtracking(List<Integer> list, int[] candidates, int target, int startIndex) {
-
         //返回 和为sum的结果集
         if (sum == target) {
             System.out.println(list);
