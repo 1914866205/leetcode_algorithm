@@ -85,6 +85,6 @@ public class LetterCombinations {
 
     public static void main(String[] args) {
 //        new LetterCombinations().letterCombinations("8");
-        new LetterCombinations().letterCombinations("9");
+        System.out.println(new LetterCombinations().letterCombinations("233"));
     }
 }
