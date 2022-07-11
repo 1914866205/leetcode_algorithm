@@ -2,7 +2,6 @@ package com.programmercarl.backtracking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -19,54 +18,6 @@ public class FindItinerary {
     List<List<String>> result = new ArrayList<>();
     List<String> path = new ArrayList<>();
 
-    //删除多于的机票
-    public void getMinPath(int startIndex) {
-        if (result.size() == 1) {
-            return;
-        }
-        String min = result.get(0).get(startIndex);
-        System.out.println("当前最小值：" + min);
-        //城市列表循环
-        for (int i = 0; i < result.get(0).size(); i++) {
-            //城市路径循环
-            for (int j = startIndex; j < result.size(); j++) {
-                System.out.println();
-                //前者为最小值
-                int temp = min(min, result.get(j).get(i));
-                if (temp == 0) {
-                    //和最小值相等，不变
-                    continue;
-                } else if (temp == 1) {
-                    //比最小值大,删除当前值
-                    System.out.println("比最小值大,删除当前值:" + result.get(j).get(i));
-                    result.remove(j);
-                    System.out.println(result);
-                    getMinPath(startIndex);
-                    return;
-                } else if(temp==2){
-                    //比最小值小
-                    System.out.println("比最小值小,删除原最小值:" + result.get(startIndex).get(i));
-                    result.remove(startIndex);
-                    System.out.println(result);
-                    getMinPath(j);
-                    return;
-                }
-            }
-        }
-    }
-
-    public int min(String city1, String city2) {
-        for (int i = 0; i < city1.length(); i++) {
-            if (city1.charAt(i) < city2.charAt(i)) {
-                return 1;
-            } else if (city1.charAt(i) > city2.charAt(i)) {
-                return 2;
-            }
-        }
-        //若相等，返回0
-        return 0;
-    }
-
 
     public List<String> findItinerary(List<List<String>> tickets) {
         boolean[] used = new boolean[tickets.size()];
@@ -76,10 +27,10 @@ public class FindItinerary {
         path.add("JFK");
         //获取所有机票
         backtracking(tickets, used, "JFK");
-        System.out.println(result);
+//        System.out.println(result);
         //删除多于的机票。得到最小路径机票
         getMinPath(0);
-        System.out.println(result);
+        System.out.println("最终结果：" + result);
         return result.get(0);
     }
 
@@ -113,50 +64,73 @@ public class FindItinerary {
     }
 
 
-    public static void main(String[] args) {
-        List<List<String>> tickets = new ArrayList<List<String>>();
-        ArrayList ticket1 = new ArrayList<ArrayList>();
-        ArrayList ticket2 = new ArrayList<ArrayList>();
-        ArrayList ticket3 = new ArrayList<ArrayList>();
-        ArrayList ticket4 = new ArrayList<ArrayList>();
-        ArrayList ticket5 = new ArrayList<ArrayList>();
-        ticket1.add("JFK");
-        ticket1.add("SFO");
-        ticket2.add("JFK");
-        ticket2.add("ATL");
-        ticket3.add("SFO");
-        ticket3.add("ATL");
-        ticket4.add("ATL");
-        ticket4.add("JFK");
-        ticket5.add("ATL");
-        ticket5.add("SFO");
-        tickets.add(ticket1);
-        tickets.add(ticket2);
-        tickets.add(ticket3);
-        tickets.add(ticket4);
-        tickets.add(ticket5);
-        System.out.println(tickets);
-        new FindItinerary().findItinerary(tickets);
+    //删除多于的机票
+    public void getMinPath(int curIndex) {
+        if (result.size() == 1) {
+            return;
+        }
+        char[] chars = new char[result.size()];
+        char min = 'Z';
+        //获取当前curIndex城市的字典第一位最小值
+        for (int i = 0; i < result.size(); i++) {
+            chars[i] = result.get(i).get(curIndex).charAt(0);
+            if (chars[i] < min) {
+                min = chars[i];
+            }
+        }
+        //凡是比这个值不一样的都删除
+        List<List<String>> temp = new ArrayList<>();
+        for (int i = 0; i < result.size(); i++) {
+            if (result.get(i).get(curIndex).charAt(0) == min) {
+                temp.add(new ArrayList<>(result.get(i)));
+            }
+        }
+        result = temp;
 
-//        List<List<String>> tickets = new ArrayList<List<String>>();
-//        ArrayList ticket1 = new ArrayList<ArrayList>();
-//        ArrayList ticket2 = new ArrayList<ArrayList>();
-//        ArrayList ticket3 = new ArrayList<ArrayList>();
-//        ArrayList ticket4 = new ArrayList<ArrayList>();
-//        ticket1.add("MUC");
-//        ticket1.add("LHR");
-//        ticket2.add("JFK");
-//        ticket2.add("MUC");
-//        ticket3.add("SFO");
-//        ticket3.add("SJC");
-//        ticket4.add("LHR");
-//        ticket4.add("SFO");
-//        tickets.add(ticket1);
-//        tickets.add(ticket2);
-//        tickets.add(ticket3);
-//        tickets.add(ticket4);
-//        System.out.println(tickets);
-//        new FindItinerary().findItinerary(tickets);
-        System.out.println(new FindItinerary().min("JFK", "SFO"));
+
+
+        min = 'Z';
+        //获取当前curIndex城市的字典第二位最小值
+        for (int i = 0; i < result.size(); i++) {
+            chars[i] = result.get(i).get(curIndex).charAt(1);
+            if (chars[i] < min) {
+                min = chars[i];
+            }
+        }
+
+
+        temp = new ArrayList<>();
+        //凡是比这个值不一样的都删除
+        for (int i = 0; i < result.size(); i++) {
+            if (result.get(i).get(curIndex).charAt(1) == min) {
+                temp.add(new ArrayList<>(result.get(i)));
+            }
+        }
+        result = temp;
+
+        min = 'Z';
+        //获取当前curIndex城市的字典第三位最小值
+        for (int i = 0; i < result.size(); i++) {
+            chars[i] = result.get(i).get(curIndex).charAt(2);
+            System.out.println(chars[i]);
+            if (chars[i] < min) {
+                min = chars[i];
+            }
+        }
+        temp = new ArrayList<>();
+        //凡是比这个值不一样的都删除
+
+        for (int i = 0; i < result.size(); i++) {
+            if (result.get(i).get(curIndex).charAt(2) == min) {
+                temp.add(new ArrayList<>(result.get(i)));
+            }
+        }
+        result = temp;
+
+        curIndex++;
+        if (curIndex == result.get(0).size()) {
+            return;
+        }
+        getMinPath(curIndex);
     }
 }
