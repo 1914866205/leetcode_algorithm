@@ -12,8 +12,12 @@ import java.util.List;
  * @Version 1.0
  * https://leetcode.cn/problems/reconstruct-itinerary/
  * 332. 重新安排行程
+ *
+ * 找到所有结果
+ * 筛选最小路径
+ *
  **/
-public class FindItinerary {
+public class FindItinerary1 {
     //结果集
     List<List<String>> result = new ArrayList<>();
     List<String> path = new ArrayList<>();
@@ -133,4 +137,6 @@ public class FindItinerary {
         }
         getMinPath(curIndex);
     }
+
+
 }
