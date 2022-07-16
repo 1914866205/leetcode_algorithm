@@ -73,7 +73,35 @@ public class CanCompleteCircuit {
         return -1;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new CanCompleteCircuit().canCompleteCircuit(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 5, 1, 2}));
+    public int canCompleteCircuit2(int[] gas, int[] cost) {
+        /**
+         * 贪心思想
+         */
+        //当前油量
+        int curSum = 0;
+        int totalSum = 0;
+        int start = 0;
+        for (int i = start; i < gas.length; i++) {
+            //当前剩余油量
+            curSum += gas[i] - cost[i];
+            //总耗油量
+            totalSum += gas[i] - cost[i];
+            //如果剩余油量<0，则不够开往下一站，则本起始点不可用，回溯
+            if (curSum < 0) {
+                curSum = 0;
+                start = i + 1;
+            }
+        }
+        //如果总加油站油量不够总行程
+        if (totalSum < 0) {
+            //则无法完成环型
+            return -1;
+        }
+        return start;
+    }
+
+
+        public static void main(String[] args) {
+        System.out.println(new CanCompleteCircuit().canCompleteCircuit2(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 5, 1, 2}));
     }
 }
