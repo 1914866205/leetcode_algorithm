@@ -1,9 +1,6 @@
 package mca.thread;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 
 /**
  * @ClassName HowToCreateThread
@@ -45,11 +42,17 @@ public class HowToCreateThread {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         new MyThread().start();
+
         new Thread(new MyRun()).start();
-        Thread t = new Thread(new FutureTask<String>(new MyCall()));
+
+        FutureTask<String> task = new FutureTask<String>(new MyCall());
+        Thread t = new Thread(task);
         t.start();
+        System.out.println(task.get());
+
+
 
         /**
          * 方式 4 使用Lambda表达式
@@ -65,6 +68,14 @@ public class HowToCreateThread {
         service.execute(()->{
             System.out.println("Hello ThreadPool");
         });
+
+
+        //实现Callable最方便的方式是使用线程池调用    异步操作
+        // Future 将来的    将来有可能拿到
+        Future<String> f = service.submit(new MyCall());
+        //这是一个阻塞类型的方法
+        //执行完 call() 装好这个Furture 拿到这个值为止，才能继续往下执行
+        String s = f.get();
         service.shutdown();
     }
 }
