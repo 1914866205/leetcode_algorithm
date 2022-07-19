@@ -11,7 +11,7 @@ import java.util.TreeMap;
  * 树的结点类
  **/
 public class TreeNode {
-    int val;
+    public int val;
     public TreeNode left;
     public TreeNode right;
 
