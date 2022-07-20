@@ -57,8 +57,12 @@
             <version>23.0.0</version>
             <scope>compile</scope>
         </dependency>
-
-
+        <!--java内存布局分析-->
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>0.9</version>
+        </dependency>
     </dependencies>
 
     <properties>
