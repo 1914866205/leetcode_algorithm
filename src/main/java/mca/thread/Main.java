@@ -2,6 +2,8 @@ package mca.thread;
 
 import org.openjdk.jol.info.ClassLayout;
 
+import java.util.concurrent.Executor;
+
 /**
  * @ClassName Main
  * @Descriotion TODO
@@ -17,6 +19,5 @@ public class Main {
         synchronized (o) {
             System.out.println(ClassLayout.parseInstance(o).toPrintable());
         }
-        ;
     }
 }
