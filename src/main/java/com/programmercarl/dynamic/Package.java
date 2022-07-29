@@ -16,7 +16,6 @@ public class Package {
 
     /**
      * 从左往右 01背包
-     *
      * @param weight       物品重量数组
      * @param value        物品价值数组
      * @param bagFreeSpace 背包剩余空间
