@@ -59,7 +59,7 @@ public class GenerateTreeNode {
     }
 
     public static void main(String[] args) {
-        TreeNode node = GenerateTreeNode.generateTreeNode("[1,2,3,4,5,6,null,8]");
+        TreeNode node = GenerateTreeNode.generateTreeNode("1,2,3,4,5,6,null,8");
         System.out.println();
     }
 }

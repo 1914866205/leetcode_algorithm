@@ -1,8 +1,6 @@
-package mca.thread;
+package mca;
 
 import org.openjdk.jol.info.ClassLayout;
-
-import java.util.concurrent.Executor;
 
 /**
  * @ClassName Main

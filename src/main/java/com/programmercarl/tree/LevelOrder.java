@@ -1,5 +1,7 @@
 package com.programmercarl.tree;
 
+import com.programmercarl.util.GenerateTreeNode;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -62,5 +64,9 @@ public class LevelOrder {
         resList.get(deep - 1).add(node.val);
         checkFun01(node.left, deep);
         checkFun01(node.right, deep);
+    }
+
+    public static void main(String[] args) {
+        new LevelOrder().levelOrder2(GenerateTreeNode.generateTreeNode("[3,9,20,null,null,15,7]"));
     }
 }

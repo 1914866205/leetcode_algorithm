@@ -1,4 +1,4 @@
-package mca.thread;
+package mca;
 
 import java.util.concurrent.*;
 
