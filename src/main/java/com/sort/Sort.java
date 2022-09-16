@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class Sort {
     public static void main(String[] args) {
         int[] arr = {1, 2, 5, 6, 3, 5};
-        sSort(arr);
+        insertSort(arr);
         Arrays.stream(arr).forEach(System.out::print);
     }
 
@@ -28,7 +28,7 @@ public class Sort {
         arr[i] = arr[j];
         arr[j] = temp;
     }
-///////////////////////1. 选择排序 ///////////////////////////////
+    ///////////////////////1. 选择排序 ///////////////////////////////
 
     /**
      * 选择排序：遍历当前数组，每次把 当前位置右边 最小（大）的放到当前位置。每次前面的先排好。
@@ -63,7 +63,7 @@ public class Sort {
      *
      * @param arr
      */
-    public static void sSort(int[] arr) {
+    public static void bubbleSort(int[] arr) {
         //这种情况不用排
         if (arr == null || arr.length < 2) {
             return;
@@ -73,6 +73,33 @@ public class Sort {
                 //两两对比，大的后面去
                 if (arr[i] > arr[j]) {
                     swap(arr, i, j);
+                }
+            }
+        }
+    }
+    ///////////////////////3. 插入排序 ///////////////////////////////
+
+    /**
+     * 插入排序：每次让前 i 个数有序
+     * 遍历数组，当前 i 位置的元素的前面是有序的，i位置元素和前一个元素比较，小于则交换位置
+     *
+     * @param arr
+     */
+    public static void insertSort(int[] arr) {
+        //这种情况不用排
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        //第一位默认有序
+        for (int i = 1; i < arr.length; i++) {
+            //当前位 和 前一位 开始比较
+            for (int j = i - 1; j >= 0; j--) {
+                //如果 前一位 比 当前为 大 ，就交换位置
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j + 1, j);
+                } else {
+                    // 已经有序了就跳出本次循环
+                    break;
                 }
             }
         }
