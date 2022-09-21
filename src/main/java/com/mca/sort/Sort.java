@@ -1,4 +1,4 @@
-package com.sort;
+package com.mca.sort;
 
 import java.util.Arrays;
 
@@ -10,11 +10,7 @@ import java.util.Arrays;
  * @Version 1.0
  **/
 public class Sort {
-    public static void main(String[] args) {
-        int[] arr = {1, 2, 5, 6, 3, 5};
-        insertSort(arr);
-        Arrays.stream(arr).forEach(System.out::print);
-    }
+
 
     /**
      * 交换数组 i 位置 和 j 位置的元素
@@ -103,5 +99,63 @@ public class Sort {
                 }
             }
         }
+    }
+
+    ///////////////////////4. 归并排序 ///////////////////////////////
+
+    /**
+     * 归并排序：把整个数组分成不同的小段
+     *
+     * @param arr
+     * @param L
+     * @param R
+     */
+    public static void mergeProcess(int[] arr, int L, int R) {
+        if (L == R) {
+            return;
+        }
+        int mid = L + (R - L) / 2;
+        mergeProcess(arr, L, mid);
+        mergeProcess(arr, mid + 1, R);
+        merge(arr, L, mid, R);
+    }
+
+    public static void merge(int[] arr, int L, int mid, int R) {
+        //辅助数组
+        int[] help = new int[R - L + 1];
+        //当前数组的位置
+        int helpIndex = 0;
+        //原数组左部分起始位置
+        int leftIndex = L;
+        //原数组右部分起始位置 mid就不行
+        int rightIndex = mid + 1;
+
+        //当左右两侧都还有数组，没有越界时
+        while (leftIndex <= mid && rightIndex <= R) {
+            help[helpIndex++] = arr[leftIndex] < arr[rightIndex] ? arr[leftIndex++] : arr[rightIndex++];
+        }
+
+        //当右边越界
+        while (leftIndex <= mid) {
+            help[helpIndex++] = arr[leftIndex++];
+        }
+
+        //当左边越界
+        while (rightIndex <= R) {
+            help[helpIndex++] = arr[rightIndex++];
+        }
+        helpIndex = 0;
+        //排好序的部分归还原数组
+        for (int i = L; i <= R; i++) {
+            arr[i] = help[helpIndex++];
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 5, 6, 8, 9, 8, 5, 3, 4, 2, 4, 2, 4, 1, 2, 5, 4, 8, 5};
+        mergeProcess(arr, 0, arr.length - 1);
+        Arrays.stream(arr).forEach(System.out::print);
+
+
     }
 }
