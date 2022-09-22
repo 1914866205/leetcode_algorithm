@@ -105,6 +105,7 @@ public class Sort {
 
     /**
      * 归并排序：把整个数组分成不同的小段
+     * 递归实现
      *
      * @param arr
      * @param L
@@ -119,6 +120,52 @@ public class Sort {
         mergeProcess(arr, mid + 1, R);
         merge(arr, L, mid, R);
     }
+
+    /**
+     * 归并排序，非递归实现
+     * 外循环，步长两倍递增，O(logN)
+     * 内循环，L为每组左组起点，左组范围[L,M] 右组范围[M+1,N]
+     * M=L+step-1
+     * N=Math.min(M+step,N-1)
+     * @param arr 1 2 5 9 7 2 3 1
+     *            0 1 2 3 4 5 6 7
+     *            L
+     */
+    public static void mergeProcess2(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        int N = arr.length;
+        int step = 1;
+        //当步长不足N
+        while (step < N) {
+            //每组左边界
+            int L = 0;
+            //如果左边界> arr.length了，就退出
+            while (L < N) {
+                //每一次范围分为左右组  左组[L,M],右组[M+1,N]
+                //[0,7]   [0,3][4,7] 步长为4  M=L+step-1
+                //        [L,M][M+1,N] N=Math.min(M+step,N-1)
+
+                int M = L + step - 1;
+                if (M > N) {
+                    break;
+                }
+                //每组右边界
+                int R = Math.min(M + step, N - 1);
+                merge(arr, L, M, R);
+                //新的左边界=右边界+1
+                L = R + 1;
+            }
+            if (step > N / 2) {
+                //步长超过一半就退出
+                break;
+            }
+            step *= 2;
+        }
+    }
+
+
 
     public static void merge(int[] arr, int L, int mid, int R) {
         //辅助数组
@@ -153,9 +200,7 @@ public class Sort {
 
     public static void main(String[] args) {
         int[] arr = {1, 2, 5, 6, 8, 9, 8, 5, 3, 4, 2, 4, 2, 4, 1, 2, 5, 4, 8, 5};
-        mergeProcess(arr, 0, arr.length - 1);
+        mergeProcess2(arr);
         Arrays.stream(arr).forEach(System.out::print);
-
-
     }
 }
