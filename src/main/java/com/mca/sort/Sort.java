@@ -1,6 +1,10 @@
 package com.mca.sort;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
+import java.util.Stack;
 
 /**
  * @ClassName Sort
@@ -127,6 +131,7 @@ public class Sort {
      * 内循环，L为每组左组起点，左组范围[L,M] 右组范围[M+1,N]
      * M=L+step-1
      * N=Math.min(M+step,N-1)
+     *
      * @param arr 1 2 5 9 7 2 3 1
      *            0 1 2 3 4 5 6 7
      *            L
@@ -166,7 +171,6 @@ public class Sort {
     }
 
 
-
     public static void merge(int[] arr, int L, int mid, int R) {
         //辅助数组
         int[] help = new int[R - L + 1];
@@ -198,9 +202,90 @@ public class Sort {
         }
     }
 
+    ///////////////////////5. 快速排序 ///////////////////////////////
+
+
+    /**
+     * 快速排序
+     * 思路：从右往左开始定义基准数，比这个数大的放右边，小的放左边
+     */
+    public  void quickSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        int N = arr.length;
+        //随机一个数和末尾数交换
+        swap(arr, (int) (Math.random() * (N)), N - 1);
+        //全范围迭代
+        int[] equalsArea = neitherlandsFlag(arr, 0, N - 1);
+        //获取当前基准的左部分和有部分边界值（包含）
+        int leftArea = equalsArea[0];
+        int rightArea = equalsArea[1];
+        Stack<Op> stack = new Stack();
+        //左右分别迭代
+        stack.push(new Op(0, leftArea - 1));
+        stack.push(new Op(rightArea + 1, N - 1));
+        while (!stack.isEmpty()) {
+            Op op = stack.pop();
+            if (op.left < op.right) {
+                //如果左边小于右边，继续迭代
+                swap(arr, (int) (op.left + (Math.random() * (op.right - op.left + 1))), op.right);
+                //在当前子范围继续拆分左右部分
+                equalsArea = neitherlandsFlag(arr, op.left, op.right);
+                leftArea = equalsArea[0];
+                rightArea = equalsArea[1];
+                stack.push(new Op(op.left, leftArea-1));
+                stack.push(new Op(rightArea+1, op.right));
+            }
+        }
+
+    }
+
+    class Op{
+        int left;
+        int right;
+
+        Op(int left, int right) {
+            this.left = left;
+            this.right = right;
+        }
+    }
+
+    public static int[] neitherlandsFlag(int[] arr, int L, int R) {
+        if (L > R) {
+            return new int[]{-1, -1};
+        }
+        if (L == R) {
+            return new int[]{L, L};
+        }
+        //小于基准数的左边界
+        int less = L - 1;
+        //大于基准数的右边界
+        int more = R;
+        int cur = L;
+        while (cur < more) {
+            if (arr[cur] == arr[R]) {
+                //如果当前数和基准数相同
+                cur++;
+            } else if (arr[cur] < arr[R]) {
+                //当前数比基准数小
+                swap(arr, less + 1, cur);
+                less++;
+                cur++;
+            } else if (arr[cur] > arr[R]) {
+                more--;
+                swap(arr, cur, more);
+            }
+        }
+        //交换基准数和 大于基准数的最小边界值
+        swap(arr, more, R);
+        return new int[]{less + 1, more};
+    }
+
+
     public static void main(String[] args) {
         int[] arr = {1, 2, 5, 6, 8, 9, 8, 5, 3, 4, 2, 4, 2, 4, 1, 2, 5, 4, 8, 5};
-        mergeProcess2(arr);
+        new Sort().quickSort(arr);
         Arrays.stream(arr).forEach(System.out::print);
     }
 }
