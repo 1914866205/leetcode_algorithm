@@ -279,10 +279,77 @@ public class Sort {
         return new int[]{less + 1, more};
     }
 
+    ///////////////////////6. 堆排序 ///////////////////////////////
+
+    public int[] heapSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return arr;
+        }
+
+        // O(NlogN) 在尾部加入元素
+//        for (int i = 0; i < arr.length; i++) {//O(N)
+//            heapInsert(arr, i);//logN
+//        }
+
+        //O(N) Floyd建堆法 从后往前
+        for (int i =arr.length-1; i >=0 ; i--) {
+            heapify(arr, i, arr.length);
+        }
+
+        int heapSize = arr.length;
+        heapSize--;
+        //交换根结点和最后一个结点
+        swap(arr, 0, arr.length - 1);
+
+        while (heapSize > 0) {
+            heapify(arr, 0, heapSize);
+            heapSize--;
+            swap(arr, 0, heapSize);
+        }
+        return arr;
+    }
+
+    /**
+     * 在数组指定位置插入元素
+     *
+     * @param arr
+     * @param index
+     */
+    public void heapInsert(int[] arr, int index) {
+        //大顶堆，插入的元素和父元素进行比较
+        while (arr[index] > arr[(index - 1) / 2]) {
+            //交换当前结点和父结点的位置
+            swap(arr, index, (index - 1) / 2);
+            index = (index - 1) / 2;
+        }
+    }
+
+
+    public void heapify(int[] arr, int index, int heapSize) {
+        //左子节点
+        int left = 2 * index + 1;
+        //如果下放还有结点
+        while (left < heapSize) {
+            //左右子节点找到最大的位置
+            int largest = (left + 1) < heapSize && arr[left+1] > arr[left] ? left+1 : left;
+            //当前结点和左右子节点中最大的位置
+            largest = arr[index] > arr[largest] ? index : largest;
+            //当前结点即为最大值，则不用变
+            if (index == largest) {
+                break;
+            }
+            //否则
+            swap(arr, index, largest);
+            //跳转到最大结点
+            index = largest;
+            left = 2 * index + 1;
+        }
+    }
+
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 5, 6, 8, 9, 8, 5, 3, 4, 2, 4, 2, 4, 1, 2, 5, 4, 8, 5};
-        new Sort().quickSort(arr);
+        int[] arr = {1, 2, 5, 6};
+        new Sort().heapSort(arr);
         Arrays.stream(arr).forEach(System.out::print);
     }
 }
