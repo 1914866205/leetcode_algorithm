@@ -65,7 +65,7 @@ public class CoverMax {
             while (!heap.isEmpty() && heap.peek() <= lines[i].start) {
                 heap.poll();
             }
-            heap.add(lines[i].start);
+            heap.add(lines[i].end);
             max = Math.max(max, heap.size());
         }
         return max;
