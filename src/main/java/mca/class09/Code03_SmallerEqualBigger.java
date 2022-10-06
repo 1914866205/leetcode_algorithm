@@ -129,8 +129,8 @@ public class Code03_SmallerEqualBigger {
 		head1.next.next.next.next.next = new Node(2);
 		head1.next.next.next.next.next.next = new Node(5);
 		printLinkedList(head1);
-		// head1 = listPartition1(head1, 4);
-		head1 = listPartition2(head1, 5);
+		 head1 = listPartition1(head1, 4);
+//		head1 = listPartition2(head1, 5);
 		printLinkedList(head1);
 
 	}
