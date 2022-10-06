@@ -42,6 +42,8 @@ public class RadixSort {
         int i = 0;
         //当前数多少位
         int j = 0;
+
+        //预留的位置
         //有多少个数就准备多少个空间
         //默认全是>=0，当然，如果有负数也好办，
         //找到最小负数，所有数 + 最小负数的绝对值，让最小值归零，排完序再减去对应值
@@ -68,6 +70,9 @@ public class RadixSort {
             for (i = R; i >= L; i--) {
                 //从右往左
                 j = getDigit(arr[i], d);
+                //代替十个桶
+                //预留count[j]个位置
+                //从右往左模拟倒出元素
                 help[count[j] - 1] = arr[i];
                 count[j]--;
             }
