@@ -55,6 +55,14 @@ public class SerializeAndReconstructTree {
         }
     }
 
+
+
+
+
+
+
+
+
     public static Queue<String> inSerial(Node head) {
         Queue<String> ans = new LinkedList<>();
         inSerialBuild(head, ans);
@@ -76,6 +84,16 @@ public class SerializeAndReconstructTree {
             inSerialBuild(head.right, ans);
         }
     }
+
+
+
+
+
+
+
+
+
+
 
 
     public static Queue<String> posSerial(Node head) {
@@ -101,63 +119,11 @@ public class SerializeAndReconstructTree {
     }
 
 
-    /////////////反序列化/////////////////
 
-    public static Node buildByPreQueue(Queue<String> preList) {
-        if (preList == null || preList.size() == 0) {
-            return null;
-        }
-        return preb(preList);
-    }
+
 
     /**
-     * 先序遍历反序列化二叉树
-     *
-     * @param preList
-     * @return
-     */
-    private static Node preb(Queue<String> preList) {
-        String value = preList.poll();
-        if (value == null) {
-            return null;
-        }
-        Node head = new Node(Integer.valueOf(value));
-        head.left = preb(preList);
-        head.right = preb(preList);
-        return head;
-    }
-
-    /**
-     * 后序 反序列化出二叉树
-     *
-     * @param posList
-     * @return
-     */
-    public static Node buildByPosQueue(Queue<String> posList) {
-        if (posList == null || posList.size() == 0) {
-            return null;
-        }
-        Stack<String> stack = new Stack<>();
-        //左右中 ——> 中右左
-        while (!posList.isEmpty()) {
-            stack.push(posList.poll());
-        }
-        return posb(stack);
-    }
-
-    private static Node posb(Stack<String> stack) {
-        String value = stack.pop();
-        if (value == null) {
-            return null;
-        }
-        Node head = new Node(Integer.valueOf(value));
-        head.right = posb(stack);
-        head.left = posb(stack);
-        return head;
-    }
-
-    /**
-     * 中序 序列化二叉树
+     * 层序 序列化二叉树
      *
      * @param head
      * @return
@@ -190,6 +156,75 @@ public class SerializeAndReconstructTree {
         }
         return ans;
     }
+
+
+
+
+    /////////////反序列化/////////////////
+
+    public static Node buildByPreQueue(Queue<String> preList) {
+        if (preList == null || preList.size() == 0) {
+            return null;
+        }
+        return preb(preList);
+    }
+
+    /**
+     * 先序遍历反序列化二叉树
+     *
+     * @param preList
+     * @return
+     */
+    private static Node preb(Queue<String> preList) {
+        String value = preList.poll();
+        if (value == null) {
+            return null;
+        }
+        Node head = new Node(Integer.valueOf(value));
+        head.left = preb(preList);
+        head.right = preb(preList);
+        return head;
+    }
+
+
+
+
+
+
+
+
+
+    
+    /**
+     * 后序 反序列化出二叉树
+     *
+     * @param posList
+     * @return
+     */
+    public static Node buildByPosQueue(Queue<String> posList) {
+        if (posList == null || posList.size() == 0) {
+            return null;
+        }
+        Stack<String> stack = new Stack<>();
+        //左右中 ——> 中右左
+        while (!posList.isEmpty()) {
+            stack.push(posList.poll());
+        }
+        return posb(stack);
+    }
+
+    private static Node posb(Stack<String> stack) {
+        String value = stack.pop();
+        if (value == null) {
+            return null;
+        }
+        Node head = new Node(Integer.valueOf(value));
+        head.right = posb(stack);
+        head.left = posb(stack);
+        return head;
+    }
+
+
 
     /**
      * 层序 反序列化 二叉树
