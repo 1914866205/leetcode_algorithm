@@ -6,6 +6,8 @@ package mca.class10;
  * @Author nitaotao
  * @Date 2022/10/7 16:03
  * @Version 1.0
+ *
+ * 递归法遍历树
  **/
 public class RecursiveTraversal {
     public static class Node {
