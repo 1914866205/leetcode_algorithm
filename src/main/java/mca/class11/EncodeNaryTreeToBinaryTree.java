@@ -62,8 +62,8 @@ public class EncodeNaryTreeToBinaryTree {
     }
 
     /**
-     * 把子节点全部转化到右子树
-     *
+     * 子节点的右节点都是父结点的子节点，
+     * 子节点的左结点都是自己的子节点。
      * @param children
      * @return
      */
@@ -78,7 +78,7 @@ public class EncodeNaryTreeToBinaryTree {
                 cur.right = node;
             }
             cur = node;
-            head.left = en(child.children);
+            cur.left = en(child.children);
         }
         return head;
     }
@@ -102,8 +102,11 @@ public class EncodeNaryTreeToBinaryTree {
     public List<Node> de(TreeNode root) {
         List<Node> children = new ArrayList<Node>();
         while (root != null) {
+            //解析每个子节点的子节点
             Node cur = new Node(root.val, de(root.left));
+            //父结点的子节点添加到列表中
             children.add(cur);
+            //遍历右节点，即遍历父结点的所有子节点
             root = root.right;
         }
         return children;
